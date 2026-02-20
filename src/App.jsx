@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import CodeSpinner from './components/CodeSpinner';
-import MonitorGlitch from "./components/MonitorGlitch";
-import GlitchOverlay from "./components/GlitchOverlay";
+{/*import CodeSpinner from './components/CodeSpinner';*/}
+{/*import MonitorGlitch from "./components/MonitorGlitch";*/}
+{/*import GlitchOverlay from "./components/GlitchOverlay";*/}
 import Scanlines from "./components/Scanlines";
-import './styles/layout.css';
-import './styles/variables.css';
+{/*import './styles/layout.css';*/}
+{/*import './styles/variables.css';*/}
 
 import Navbar from './components/Navbar';
 import Home from './components/Home';

@@ -1,3 +1,19 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* This makes sure the scrollbar looks clean on your dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000a0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f7ff;
+  border-radius: 10px;
+}
+
 :root {
   --cyan: #00ffff;
   --dark: #000a0d;
