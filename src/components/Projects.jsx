@@ -32,7 +32,7 @@ const Projects = () => {
       title: "Cyberpunk Portfolio",
       description: "My personal portfolio (this website!)",
       image: portfolioImg,
-      github: "#" // placeholder — add later
+      github: "https://github.com/manartouf/cyberpunk-portfolio"
     }
   ];
 
