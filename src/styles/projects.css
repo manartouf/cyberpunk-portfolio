@@ -1,0 +1,104 @@
+#projects {
+  min-height: 100vh;
+  padding: 100px 20px; /* Matched padding with Contact section */
+  background-color: #000a0d;
+  color: #00f7ff;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the header and the grid */
+}
+
+/* Updated header to match Contact font and size */
+.section-title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* GRID FOR PROJECT CARDS */
+.projects-grid {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center; /* Ensures the cards stay centered under the header */
+  width: 95%;         
+  max-width: 1200px;  
+  margin: 0 auto;
+}
+
+/* CARD STYLING */
+.project-card {
+  position: relative;
+  width: 260px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* IMAGE INSIDE CARD */
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border: 2px solid #00f7ff;
+  transition: 0.3s;
+}
+
+/* CARD TITLE UNDER IMAGE */
+.project-card h3 {
+  margin-top: 10px;
+  color: #00f7ff;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* OVERLAY FOR HOVER EFFECT */
+.project-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* HOVER SHOW OVERLAY */
+.project-card:hover .overlay {
+  opacity: 1;
+}
+
+/* OVERLAY TEXT */
+.overlay h3 {
+  color: #ffffff;
+  text-shadow: 0 0 5px #00BFFF, 0 0 10px #003333;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.overlay p {
+  color: #00f7ff;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 240px;
+}
+
+.overlay span {
+  color: #00BFFF;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00BFFF;
+  margin-top: 8px;
+}
+
+/* IMAGE BORDER COLOR CHANGE ON HOVER */
+.project-card:hover img {
+  border-color: #ffffff;
+}

@@ -1,0 +1,191 @@
+:root {
+  --cyan: #00ffff;
+  --dark: #000a0d;
+  --bloom: 0 0 12px rgba(0, 255, 255, 0.8),
+           0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+html, body {
+  background-color: var(--dark);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+#home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px; /* Prevents overlap when height is too small */
+  overflow: hidden;
+  background: var(--dark);
+  color: var(--cyan);
+  font-family: 'Share Tech Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+/* GRID & SCANLINE */
+.grid {
+  position: fixed; 
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scanline {
+  position: fixed;
+  left: 0; width: 100vw; height: 4px;
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 20px var(--cyan);
+  animation: sweep 4s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes sweep { 0% { top: -2%; } 100% { top: 102%; } }
+
+/* CORNER TAG */
+.corner-tag {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  padding: 8px 15px;
+  border-left: 2px solid var(--cyan);
+  z-index: 100;
+  text-transform: uppercase;
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.tag-prefix { opacity: 0.5; font-size: 0.7rem; margin-right: 10px; }
+
+/* SYSTEM TEXT */
+.system-text {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  z-index: 5;
+  transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#home.loaded .system-text {
+  top: 100px;
+  left: 30px;
+  transform: translateX(0);
+}
+
+.blink { animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* HUD */
+.hud-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 5;
+}
+
+#home.loaded .hud-wrapper {
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.hud-center {
+  width: 450px;
+  height: 450px;
+  position: relative;
+}
+
+.rings-svg { position: absolute; width: 100%; height: 100%; filter: drop-shadow(0 0 8px var(--cyan)); }
+.ring-track { fill: none; stroke: rgba(0,255,255,0.05); stroke-width: 1; }
+.ring-segment { fill: none; stroke: var(--cyan); transform-origin: center; }
+.s1 { stroke-width: 3; stroke-dasharray: 100 500; animation: rotate 15s linear infinite; }
+.s2 { stroke-width: 15; stroke-dasharray: 200 600; opacity: 0.6; animation: rotate 10s linear reverse infinite; }
+.s3 { stroke-width: 2; stroke-dasharray: 10 30; animation: rotate 4s linear infinite; }
+
+@keyframes rotate { to { transform: rotate(360deg); } }
+
+/* CORE */
+.data-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.glow-text {
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  text-shadow: var(--bloom);
+}
+
+.status-bar { width: 150px; height: 4px; border: 1px solid var(--cyan); margin: 10px auto; }
+.fill { width: 80%; height: 100%; background: var(--cyan); box-shadow: var(--bloom); }
+
+/* INTRO TEXT */
+.intro-text {
+  position: absolute;
+  left: 10%;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 5;
+  opacity: 0;
+  animation: fadeIn 1s forwards 0.5s;
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+
+.stable-name {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  text-shadow: var(--bloom);
+}
+
+.typed-box { font-size: 1.5rem; opacity: 0.8; }
+
+/* --- RESPONSIVE / ZOOM FIX --- */
+/* This only triggers when screen is narrow (mobile) or zoom is very high */
+@media (max-width: 950px) {
+  #home {
+    height: auto;
+    overflow-y: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 100px;
+  }
+
+  .corner-tag { position: relative; top: 20px; left: 0; margin-bottom: 20px; }
+  
+  #home.loaded .system-text { 
+    position: relative; top: 20px; left: 0; transform: none; margin-bottom: 40px;
+  }
+
+  #home.loaded .intro-text {
+    position: relative; top: 0; left: 0; transform: none;
+    text-align: center; width: 100%; margin-bottom: 50px;
+  }
+
+  #home.loaded .hud-wrapper {
+    position: relative; top: 0; left: 0; transform: none;
+    scale: 0.6; /* Shrink HUD so it fits on zoomed screens */
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,24 @@
+.binary-ring {
+  position: fixed;
+  z-index: 5;      /* below glitch overlay but above Home background */
+  bottom: 50px; /* gear is at bottom left */
+  left: 50px;   /* adjust as needed */
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.binary-ring .bit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 -80px;
+  color: #00f7ff;
+  font-family: monospace;
+  font-size: 18px;
+  text-shadow:
+    0 0 5px #00f7ff,
+    0 0 10px #00f7ff,
+    0 0 20px #00f7ff;
+}

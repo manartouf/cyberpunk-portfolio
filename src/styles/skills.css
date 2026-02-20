@@ -1,0 +1,78 @@
+#skills { 
+  padding: 80px 10%; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  background-color: #000a0d;
+}
+
+#skills h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff;
+  margin-bottom: 40px;
+}
+
+.skills-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 50px; 
+  width: 100%; 
+  max-width: 1000px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-cat h3 { 
+  color: #ffffff; 
+  margin-bottom: 25px; 
+  font-family: 'Courier New', monospace;
+  border-bottom: 2px solid #00f7ff; 
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill span {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: block;
+  color: #00f7ff;
+  font-family: 'Courier New', monospace;
+}
+
+/* Progress background */
+.progress {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+/* Progress bar with your animation */
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00f7ff, #0047AB);
+  box-shadow: 0 0 10px #00f7ff;
+  animation: fillBar 2s ease forwards;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
